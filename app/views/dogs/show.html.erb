@@ -1,0 +1,26 @@
+<h1><%= @dog.name %>'s details</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @dog.name %>
+</p>
+
+<p>
+  <strong>Breed</strong>
+  <%= @dog.breed %>
+</p>
+
+<p>
+  <strong>Date of birth</strong>
+  <%= @dog.date_of_birth %>
+</p>
+
+<% if @dog.registered_at? %>
+  <p>
+    <strong>Registered until</strong>
+    <%= @dog.registered_at + @dog.period.to_i.months %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_dog_path(@dog), class: 'btn btn-default' %>
+<%= link_to 'Back', dogs_path, class: 'btn btn-default' %>

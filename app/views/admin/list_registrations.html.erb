@@ -1,0 +1,17 @@
+<h1>List of dog registrations</h1>
+<% if @dogs.size > 0 %>
+  <ul>
+    <% owner = @dogs.first.owner %>
+    <li><%= owner.name %>
+      <ul>
+        <% @dogs.each do |d| %>
+          <% if not d.owner_id == owner.id %>
+            <% owner = d.owner %>
+              </ul></li><li><%= owner.name %><ul>
+            <% end %>
+          <li><%=d.name%> (<%=d.registered_at%>)</li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+<% end %>

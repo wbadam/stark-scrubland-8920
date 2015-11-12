@@ -1,0 +1,20 @@
+<h1>My details</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @owner.name %>
+</p>
+
+<p>
+  <strong>Postal address:</strong>
+  <%= @owner.postal_address %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @owner.email %>
+</p>
+
+<%= link_to 'Edit', edit_details_path, class: 'btn btn-default' %>
+<%= link_to 'Delete', details_path, method: :delete,
+            data: {confirm: 'Deleting details results in losing dogs. Are your sure?'}, class: 'btn btn-default' %>

@@ -1,0 +1,33 @@
+<h1>List of my dogs</h1>
+
+<%= link_to 'New dog', new_dog_path, class: 'btn btn-default' %>
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Breed</th>
+    <th>Date of birth</th>
+    <th>Registered until</th>
+    <th colspan="1"></th>
+  </tr>
+
+  <% @dogs.each do |dog| %>
+    <tr>
+      <td><%= dog.name %></td>
+      <td><%= dog.breed %></td>
+      <td><%= dog.date_of_birth %></td>
+
+      <% if not (current_user.owner.nil? or dog.owner.nil?) %>
+        <% if dog.registered_at? %>
+          <td><%= dog.registered_at + dog.period.to_i.months %></td>
+        <% else %>
+          <td><%= link_to 'Register', register_dog_path(dog), class: 'btn btn-default' %>
+        <% end %>
+      <% else %>
+        <td></td>
+      <% end %>
+
+      <td><%= link_to 'Show', dog_path(dog) %> | <%= link_to 'Edit', edit_dog_path(dog) %> |
+        <%= link_to 'Delete', dog_path(dog), method: :delete, data: {confirm: 'Are you sure?' } %></td>
+  <% end %>
+</table>

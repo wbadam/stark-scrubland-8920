@@ -1,0 +1,8 @@
+<h1>Registration successful</h1>
+<p>You have successfully registered your dog named <%= @dog.name %> (breed: <%= @dog.breed %>, born at
+  <%= @dog.date_of_birth %> to the owner: <%= @dog.owner.name %> for the next
+  <%= @dog.period %> months. The registration will expire on <%= @dog.registered_at + @dog.period.to_i.months %>.</p>
+
+<p>Please transfer <%= @fee %> into the following bank account: <%= @bank_account %></p>
+
+<%= link_to 'Back', dogs_path, class: 'btn btn-default' %>

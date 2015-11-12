@@ -1,0 +1,30 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Dog Register</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <% if user_signed_in? %>
+          <li><a href="<%= details_path %>">My details</a></li>
+          <li><a href="<%= dogs_path %>">My dogs</a></li>
+
+          <% if current_user.role == 'admin' %>
+            <li><a href="<%= admin_registrations_path %>">List of registrations</a></li>
+          <% end %>
+        <% end %>
+      </ul>
+
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+            <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+            <li><%= link_to 'Sign in', new_user_session_path %></li>
+        <% end %>
+      </ul>
+
+    </div>
+  </div>
+</nav>
